@@ -7,7 +7,7 @@
   }
 
 body{
-    background-color: #d14242;
+    background-color: #d13333;
 }
 
 #title_container{
@@ -51,7 +51,11 @@ h1{
     /* box-shadow: 0 0 30px #464646; */
     box-shadow: 12px 12px 19px 2px rgba(0,0,0,0.46);
     font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
-    
+    transition: transform 0.1s;
+}
+
+.grid_button:hover{
+    transform: scale(1.1);
 }
 
 #grid_envelope{

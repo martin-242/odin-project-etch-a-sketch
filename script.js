@@ -1,31 +1,52 @@
-// Function that gets user input and validates it
-function getValidInput(){
-    let keepGoing = true;
-    while ( KeepGoing = true ) {
-        let value = prompt("Please enter a positive number between 1 and 100 for the grid size");
-        if ( ( value > 100 ) || ( value < 0 ) || ( isNaN(value) ) ) {
-            alert("Size must be a positive number between 0 and 100");
-        }
-        else {
-            return value;
-        };
-        keepGoing = false;
-    };
-};
-
 // Function that creates the grid
 function gridMaker(size){ 
-    let row = '';
-    for (let i = size; i >= 1; i--) {
-        row += 'x';
+    let gridSize = size;
+    let columns = "";
+    let gridRows = gridSize;
+    for ( let i = gridRows; i >= 1; i-- ) {
+        columns += "1fr ";
     }
-    for (let i = size; i >= 1; i--) {
-        console.log(row);
+    gridContainer.setAttribute("style", `grid-template-columns:${columns};grid-template-rows:${columns};`);
+    for ( let i = gridSize * gridSize; i >= 1; i-- ) {
+        let gridPixel = document.createElement("div");
+        gridContainer.prepend(gridPixel);
+        gridPixel.setAttribute("id", "gridPixel");
+        gridPixel.setAttribute("class", ("pixel_" + `${i}`));
+    };
+    let allPixels = document.querySelectorAll("#gridPixel");    
+    allPixels.forEach(element => { element.addEventListener("mouseover", () => { 
+        element.classList.add("pixel_black"); } )
     }
-    
+    );
+};
+
+function removeGrid(){
+    let allPixels = document.querySelectorAll("#gridPixel");
+    allPixels.forEach(element => { 
+        gridContainer.removeChild(element)
+        });
 };
 
 // Program starts running here 
 
-let size = getValidInput();
-gridMaker(size);
+const gridContainer = document.querySelector("#grid_container");
+const gridEnvelope = document.querySelector("#grid_envelope");
+
+const gridButton16 = document.querySelector("#button_16");
+gridButton16.addEventListener("click", () => {    
+    removeGrid();
+    gridMaker(16);
+});
+
+const gridButton32 = document.querySelector("#button_32");
+gridButton32.addEventListener("click", () => {
+    removeGrid();
+    gridMaker(32);
+});
+
+const gridButton64 = document.querySelector("#button_64");
+gridButton64.addEventListener("click", () => {
+    removeGrid();
+    gridMaker(64);
+});
+

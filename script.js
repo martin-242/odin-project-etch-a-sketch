@@ -27,6 +27,13 @@ function removeGrid(){
         });
 };
 
+function clearGrid(){
+    let allPixels = document.querySelectorAll("#gridPixel");
+    allPixels.forEach(element => { 
+        element.classList.remove("pixel_black");
+        });
+};
+
 // Program starts running here 
 
 const gridContainer = document.querySelector("#grid_container");
@@ -48,6 +55,11 @@ const gridButton64 = document.querySelector("#button_64");
 gridButton64.addEventListener("click", () => {
     removeGrid();
     gridMaker(64);
+});
+
+const gridButtonClear = document.querySelector("#button_clear");
+gridButtonClear.addEventListener("click", () => {    
+    clearGrid();
 });
 
 gridMaker(32);

@@ -1,10 +1,14 @@
 * {
-    /* margin: 0;
-    padding: 0; */
+    /* margin: 0; */
+    /* padding: 0;  */
     box-sizing: border-box;
-    font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
-    border: 0px solid black;
+    font-family: 'Cabin Sketch', Roboto, Verdana, Geneva, Tahoma, sans-serif;
+    /* border: 0px solid black; */
   }
+
+body{
+    background-color: #d14242;
+}
 
 #title_container{
     display: flex;
@@ -13,11 +17,15 @@
 }
 
 .title{
-    font-size: 22px;
+    font-size: 28px;
+    color: goldenrod;
 }
 
 h1{
     margin: 0;
+    font-family: 'Cabin Sketch', sans-serif;
+    text-shadow: 1px 1px white, -1px -1px #444;
+    
 }
 
 #UI_container{
@@ -36,8 +44,14 @@ h1{
 
 .grid_button{
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid black;
+    height: 90px;
+    width: 90px;
+    border-radius: 100%;
+    border: 4px ridge rgb(160, 160, 160);
+    /* box-shadow: 0 0 30px #464646; */
+    box-shadow: 12px 12px 19px 2px rgba(0,0,0,0.46);
+    font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 
 #grid_envelope{
@@ -49,8 +63,9 @@ h1{
     width: 540px;
     height: 540px;
     display: grid;
-    box-shadow: 0 0 30px #464646;
-    background-color: rgb(250, 235, 215);   
+    box-shadow: inset 0px 0px 12px 5px rgba(0,0,0,0.47);
+    background-color: rgb(233, 223, 211);   
+    border: 6px solid #b43838;
 }
 
 .pixel_black{
@@ -58,7 +73,22 @@ h1{
 }
 
 #gridPixel{
-    margin: 0;
-    border: 1px solid black;
     margin: -1px 0 0 -1px;
+    border: 1px solid black;
 } 
+
+#footer_container{
+    font-family: 'Cabin Sketch', sans-serif;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: goldenrod;
+    text-shadow: 1px 1px white, -1px -1px #444;
+
+}
+
+a{
+    color: goldenrod;
+    text-decoration: none;
+}

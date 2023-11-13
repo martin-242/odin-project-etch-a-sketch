@@ -5,6 +5,9 @@
   <title>Odin's Project - Etch a Sketch</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap" rel="stylesheet">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -12,14 +15,18 @@
   <div class="title"><h1>Etch-a-Sketch</h1></div>
 </div>
 <div id="UI_container">
-    <div id="UI_buttons">
-        <button id="button_16" class="grid_button">16 x 16</button>
-        <button id="button_32" class="grid_button">32 x 32</button>
-        <button id="button_64" class="grid_button">64 x 64</button>
-    </div>
     <div id="grid_envelope">
         <div id="grid_container"></div>
     </div>
+    <div id="UI_buttons">
+      <button id="button_16" class="grid_button">16 x 16</button>
+      <button id="button_32" class="grid_button">32 x 32</button>
+      <button id="button_64" class="grid_button">64 x 64</button>
+      <button id="button_clear" class="grid_button">Clear Grid</button>
+  </div>
+</div>
+<div id="footer_container">
+  <div id="footer">By <a href="https://github.com/martin-242" target="_blank">Martin242</a> for The Odin's Project Course</div>
 </div>
 </body>
 </html>

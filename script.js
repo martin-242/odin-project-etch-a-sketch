@@ -50,3 +50,4 @@ gridButton64.addEventListener("click", () => {
     gridMaker(64);
 });
 
+gridMaker(32);

@@ -89,6 +89,9 @@ gridButtonClear.addEventListener("click", () => {
 const gridButtonEraser = document.querySelector("#button_eraser");
 gridButtonEraser.addEventListener("click", () => {    
     changeColor("pixel_eraser");
+    gridButtonBlack.classList.remove("active");
+    gridButtonEraser.classList.add("active");
+
     
 });
 
@@ -96,7 +99,12 @@ gridButtonEraser.addEventListener("click", () => {
 const gridButtonBlack = document.querySelector("#button_black");
 gridButtonBlack.addEventListener("click", () => {    
     changeColor("pixel_black");
+    gridButtonEraser.classList.remove("active");
+    gridButtonBlack.classList.add("active");
+    
 });
 
 // Creates starting grid
 gridMaker(32);
+gridButtonEraser.classList.remove("active");
+gridButtonBlack.classList.add("active");

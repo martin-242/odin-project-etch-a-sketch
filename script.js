@@ -15,7 +15,7 @@ function gridMaker(size){
     };
     let allPixels = document.querySelectorAll("#gridPixel");    
     allPixels.forEach(element => { element.addEventListener("mouseover", () => { 
-        element.classList.add("pixel_black"); } )
+        element.classList.add(`pixel_black`); } )
     }
     );
 };
@@ -34,7 +34,21 @@ function clearGrid(){
         });
 };
 
+function changeColor(color){
+    let newColor = color;
+    let allPixels = document.querySelectorAll("#gridPixel");    
+    allPixels.forEach(element => { element.addEventListener("mouseover", () => { 
+        element.classList.remove(`${currentColor}`); 
+        element.classList.add(`${newColor}`);
+        currentColor = newColor;
+    } )}
+    );
+    return currentColor;
+};
+
 // Program starts running here 
+
+let currentColor = "pixel_black";
 
 const gridContainer = document.querySelector("#grid_container");
 const gridEnvelope = document.querySelector("#grid_envelope");
@@ -60,6 +74,17 @@ gridButton64.addEventListener("click", () => {
 const gridButtonClear = document.querySelector("#button_clear");
 gridButtonClear.addEventListener("click", () => {    
     clearGrid();
+});
+
+const gridButtonEraser = document.querySelector("#button_eraser");
+gridButtonEraser.addEventListener("click", () => {    
+    changeColor("pixel_eraser");
+    
+});
+
+const gridButtonBlack = document.querySelector("#button_black");
+gridButtonBlack.addEventListener("click", () => {    
+    changeColor("pixel_black");
 });
 
 gridMaker(32);

@@ -24,8 +24,7 @@ body{
 h1{
     margin: 0;
     font-family: 'Cabin Sketch', sans-serif;
-    text-shadow: 1px 1px white, -1px -1px #444;
-    
+    text-shadow: 1px 1px white, -1px -1px #444;  
 }
 
 #UI_container{
@@ -43,6 +42,21 @@ h1{
 }
 
 .grid_button{
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px ridge rgb(160, 160, 160);
+    /* box-shadow: 0 0 30px #464646; */
+    box-shadow: 12px 12px 19px 2px rgba(0,0,0,0.46);
+    font-family: Roboto, Verdana, Geneva, Tahoma, sans-serif;
+    transition: transform 0.1s;
+}
+
+.grid_button:hover{
+    transform: scale(1.1);
+}
+
+.brush_button{
     padding: 10px;
     height: 90px;
     width: 90px;
@@ -54,7 +68,7 @@ h1{
     transition: transform 0.1s;
 }
 
-.grid_button:hover{
+.brush_button:hover{
     transform: scale(1.1);
 }
 
@@ -72,8 +86,18 @@ h1{
     border: 6px solid #b43838;
 }
 
+#UI_buttons_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .pixel_black{
     background-color: rgb(77, 77, 77);
+}
+
+.pixel_eraser{
+    background-color: rgb(233, 223, 211);
 }
 
 #gridPixel{
@@ -89,7 +113,6 @@ h1{
     font-size: 16px;
     color: goldenrod;
     text-shadow: 1px 1px white, -1px -1px #444;
-
 }
 
 a{

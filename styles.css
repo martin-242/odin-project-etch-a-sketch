@@ -68,9 +68,9 @@ h1{
     transition: transform 0.1s;
 }
 
-.brush_button:hover{
-    /* transform: scale(0.98); */
-}
+/* .brush_button:hover{
+       transform: scale(0.98);
+} */
 
 .brush_button.active{
     padding: 10px;

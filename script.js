@@ -69,6 +69,27 @@ function changeColor(color){
             });
         })
     }
+    else if ( newColor == "pixel_custom" ) {
+        allPixels.forEach(element => { 
+            element.addEventListener("mousedown", (e) => {
+                if (e.button === 0) {
+                    isMouseDown = true;
+                    element.removeAttribute("style");
+                    element.classList.remove(`${currentColor}`); 
+                    element.setAttribute("style", `background-color:${gridButtonPicker.value}`);    
+                    currentColor = newColor;
+                }
+            });
+            element.addEventListener("mousemove", () => {
+                if (isMouseDown) {
+                    element.removeAttribute("style");
+                    element.classList.remove(`${currentColor}`); 
+                    element.setAttribute("style", `background-color:${gridButtonPicker.value}`);    
+                    currentColor = newColor;
+                    }
+            });
+        });
+    }
     else {
         allPixels.forEach(element => { 
             element.addEventListener("mousedown", (e) => {
@@ -88,7 +109,7 @@ function changeColor(color){
                     currentColor = newColor;
                     }
             });
-        })
+        });
     };
     return currentColor;
 };
@@ -112,6 +133,11 @@ function selectBrushButton(brush){
             element.classList.remove("active");
             gridButtonRainbow.classList.add("active");
             currentColor = "pixel_rainbow";    
+        }
+        else if ( brush == "custom" ){
+            element.classList.remove("active");
+            gridButtonPicker.classList.add("active");
+            currentColor = "pixel_custom";    
         }
     });
     return currentColor;
@@ -180,6 +206,13 @@ const gridButtonRainbow = document.querySelector("#button_rainbow");
 gridButtonRainbow.addEventListener("click", () => {    
     changeColor("pixel_rainbow");
     selectBrushButton("rainbow");
+}); 
+
+// Selects the custom brush
+const gridButtonPicker = document.querySelector("#button_picker");
+gridButtonPicker.addEventListener("click", () => {    
+    changeColor("pixel_custom");
+    selectBrushButton("custom");
 }); 
 
 // Creates starting grid

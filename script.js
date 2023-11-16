@@ -233,7 +233,7 @@ function saveDivAsImage() {
       // Create a temporary link to trigger the download
       var link = document.createElement('a');
       link.href = image;
-      link.download = 'my_magicboard_drawing.png'; // Name the image file
+      link.download = 'my_magic_drawing.png'; // Name the image file
   
       // Trigger the download
       link.click();

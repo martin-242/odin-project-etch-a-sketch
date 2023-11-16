@@ -36,31 +36,62 @@ function clearGrid(){
 
 // Changes brush color
 function changeColor(color){
+    let allPixels = document.querySelectorAll("#gridPixel");
     let newColor = color;
     if ( newColor == "pixel_rainbow" ) {
-        const rainbowColors = ["#e81416", "#ffa500", "#faeb36", "#79c314", "#487de7", "#4b369d", "#70369d"];        
-        let allPixels = document.querySelectorAll("#gridPixel");    
-        allPixels.forEach(element => { element.addEventListener("mouseover", () => { 
-            let randomNumber = Math.floor(Math.random() * 7);
-            element.classList.remove(`${currentColor}`); 
-            element.classList.add(`${newColor}`);
-            let randomColor = rainbowColors[randomNumber];
-            element.setAttribute("style", `background-color:${randomColor}`);
-            currentColor = newColor;
-        } ) } );
-        return currentColor;
+        const rainbowColors = ["#e81416", "#ffa500", "#faeb36", "#79c314", "#487de7", "#4b369d", "#70369d"]; 
+        allPixels.forEach(element => { 
+            element.addEventListener("mousedown", (e) => {
+                if (e.button === 0) {
+                    isMouseDown = true;
+                    let randomNumber = Math.floor(Math.random() * 7);
+                    element.classList.remove(`${currentColor}`); 
+                    element.classList.add(`${newColor}`);
+                    let randomColor = rainbowColors[randomNumber];
+                    element.setAttribute("style", `background-color:${randomColor}`);
+                    currentColor = newColor;
+                }})
+            element.addEventListener("mousemove", () => {
+                if (isMouseDown) {
+                    let randomNumber = Math.floor(Math.random() * 7);
+                    element.classList.remove(`${currentColor}`); 
+                    element.classList.add(`${newColor}`);
+                    let randomColor = rainbowColors[randomNumber];
+                    element.setAttribute("style", `background-color:${randomColor}`);
+                    currentColor = newColor;
+                }
+                });
+            element.addEventListener("mouseup", () => {
+                if (isMouseDown) {
+                    isMouseDown = false;
+                }
+            });
+        })
     }
     else {
-    let allPixels = document.querySelectorAll("#gridPixel");    
-    allPixels.forEach(element => { element.addEventListener("mouseover", () => { 
-        element.removeAttribute("style");
-        element.classList.remove(`${currentColor}`); 
-        element.classList.add(`${newColor}`);    
-        currentColor = newColor;    
-    } ) } );
-    return currentColor;
+        allPixels.forEach(element => { 
+            element.addEventListener("mousedown", (e) => {
+                if (e.button === 0) {
+                    isMouseDown = true;
+                    element.removeAttribute("style");
+                    element.classList.remove(`${currentColor}`); 
+                    element.classList.add(`${newColor}`);    
+                    currentColor = newColor;
+                }
+            });
+            element.addEventListener("mousemove", () => {
+                if (isMouseDown) {
+                    element.removeAttribute("style");
+                    element.classList.remove(`${currentColor}`); 
+                    element.classList.add(`${newColor}`);    
+                    currentColor = newColor;
+                    }
+            });
+        })
     };
+    return currentColor;
 };
+    
 
 // Selects active button and disable the others
 function selectBrushButton(brush){
@@ -88,6 +119,14 @@ function selectBrushButton(brush){
 };
 
 //////////////////////////////////////////// Program starts running here 
+
+// Tracks if the mouse button is held down
+let isMouseDown = false;
+
+// Adds event listeners for mousedown, mouse move and mouseup  
+document.addEventListener("mouseup", () => {
+    isMouseDown = false;
+});
 
 // Sets default starting color
 let currentColor = "pixel_black";

@@ -34,7 +34,8 @@ function clearGrid(){
         });
 };
 
-// Changes brush color
+// Changes brush color and creates event listeners
+// Needs to be reworked to separate the adding of event listeners from the color changing
 function changeColor(color){
     let allPixels = document.querySelectorAll("#gridPixel");
     let newColor = color;
@@ -93,29 +94,27 @@ function changeColor(color){
 };
     
 
-// Selects active button and disable the others
+// Selects active button, disable the others and returns the selected color
 function selectBrushButton(brush){
-    if ( brush == "black" ){
-        gridButtonBlack.classList.add("active");
-        gridButtonRainbow.classList.remove("active");
-        gridButtonEraser.classList.remove("active");
-        currentColor = "pixel_black";
-        return currentColor;
-    }
-    else if ( brush == "eraser" ){
-        gridButtonEraser.classList.add("active"); 
-        gridButtonBlack.classList.remove("active");
-        gridButtonRainbow.classList.remove("active");
-        currentColor = "pixel_eraser";
-        return currentColor;
-    }
-    else if ( brush == "rainbow" ){
-        gridButtonRainbow.classList.add("active");   
-        gridButtonEraser.classList.remove("active");
-        gridButtonBlack.classList.remove("active");
-        currentColor = "pixel_rainbow";
-        return currentColor;
-    }
+    let brushButtons = document.querySelectorAll(".brush_button");
+    brushButtons.forEach(element => {
+        if ( brush == "black" ){
+            element.classList.remove("active");
+            gridButtonBlack.classList.add("active");
+            currentColor = "pixel_black";
+        }
+        else if ( brush == "eraser" ){
+            element.classList.remove("active");
+            gridButtonEraser.classList.add("active");
+            currentColor = "pixel_eraser";    
+        }
+        else if ( brush == "rainbow" ){
+            element.classList.remove("active");
+            gridButtonRainbow.classList.add("active");
+            currentColor = "pixel_rainbow";    
+        }
+    });
+    return currentColor;
 };
 
 //////////////////////////////////////////// Program starts running here 

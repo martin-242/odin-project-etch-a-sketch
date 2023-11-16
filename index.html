@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -27,7 +28,7 @@
     <div id="UI_buttons_container">
       <div id="UI_buttons">
         <button id="button_eraser" class="brush_button">Eraser</button>
-        <button id="button_black" class="brush_button">Black</button>
+        <button id="button_black" class="brush_button">Dark Grey</button>
         <button id="button_rainbow" class="brush_button">Rainbow</button>
         <input id="button_picker" class="brush_button" type="color" value="#b43838">
       </div>
@@ -36,5 +37,12 @@
 <div id="footer_container">
   <div id="footer">By <a href="https://github.com/martin-242" target="_blank">Martin242</a> for The Odin's Project Course</div>
 </div>
+
+<div id="contextMenu" class="context-menu" style="display: none;">
+  <ul>
+    <li id="saveImage">Save Image</li>
+  </ul>
+</div>
+
 </body>
 </html>

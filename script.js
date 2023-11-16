@@ -219,3 +219,62 @@ gridButtonPicker.addEventListener("click", () => {
 gridMaker(32);
 changeColor("pixel_black");
 selectBrushButton("black");
+
+//////////////////////// SAVE IMAGE
+
+// Function to save the div content as an image
+function saveDivAsImage() {
+    const div = document.querySelector("#grid_container"); // The div you want to save as an image
+  
+    html2canvas(div).then(function(canvas) {
+      // Create an image from the canvas
+      var image = canvas.toDataURL("image/png", 1.0);
+  
+      // Create a temporary link to trigger the download
+      var link = document.createElement('a');
+      link.href = image;
+      link.download = 'my_magicboard_drawing.png'; // Name the image file
+  
+      // Trigger the download
+      link.click();
+    });
+  }
+  
+  // Function to show the context menu
+  function showContextMenu(x, y) {
+    var contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = x + 'px';
+    contextMenu.style.top = y + 'px';
+  }
+  
+  // Function to hide the context menu
+  function hideContextMenu() {
+    var contextMenu = document.getElementById('contextMenu');
+    contextMenu.style.display = 'none';
+  }
+  
+  // Add event listener for right-click on the div
+  document.querySelector("#grid_container").addEventListener('contextmenu', function(e) {
+    e.preventDefault(); // Prevent the default context menu
+    showContextMenu(e.pageX, e.pageY); // Show the custom context menu at the cursor position
+  });
+  
+  // Add event listener for click on the 'Save Image' option
+  document.getElementById('saveImage').addEventListener('click', function() {
+    saveDivAsImage();
+    hideContextMenu(); // Hide the context menu after saving
+  });
+  
+  // Add event listener to hide the context menu when clicking elsewhere on the page
+  document.addEventListener('click', function(e) {
+    if (e.target.id !== 'saveImage') {
+      hideContextMenu();
+    }
+  });
+  
+  // Prevent the context menu from hiding when clicking within it
+  document.getElementById('contextMenu').addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+  

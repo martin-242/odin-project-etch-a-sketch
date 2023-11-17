@@ -15,6 +15,7 @@ function gridMaker(size){
         gridPixel.setAttribute("class", "pixel");
     };
     changeColor(currentColor);
+    gridButtonHide.textContent = "Hide Grid";
 };
 
 // Removes grid

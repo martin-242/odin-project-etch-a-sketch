@@ -11,7 +11,6 @@ function gridMaker(size){
         let gridPixel = document.createElement("div");
         gridContainer.prepend(gridPixel);
         gridPixel.setAttribute("id", "gridPixel");
-        /* gridPixel.setAttribute("class", ("pixel_" + `${i}`)); */
         gridPixel.setAttribute("class", "pixel");
     };
     changeColor(currentColor);
@@ -145,7 +144,7 @@ function selectBrushButton(brush){
     return currentColor;
 };
 
-//////////////////////////////////////////// Program starts running here 
+///////////////////////// Program starts running here /////////////////////////
 
 // Tracks if the mouse button is held down
 let isMouseDown = false;

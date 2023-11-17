@@ -11,7 +11,8 @@ function gridMaker(size){
         let gridPixel = document.createElement("div");
         gridContainer.prepend(gridPixel);
         gridPixel.setAttribute("id", "gridPixel");
-        gridPixel.setAttribute("class", ("pixel_" + `${i}`));
+        /* gridPixel.setAttribute("class", ("pixel_" + `${i}`)); */
+        gridPixel.setAttribute("class", "pixel");
     };
     changeColor(currentColor);
 };
@@ -156,6 +157,9 @@ document.addEventListener("mouseup", () => {
 // Sets default starting color
 let currentColor = "pixel_black";
 
+// Shows grid lines as default
+let gridVisible = true;
+
 // Selects the grid containers
 const gridContainer = document.querySelector("#grid_container");
 const gridEnvelope = document.querySelector("#grid_envelope");
@@ -186,6 +190,28 @@ const gridButtonClear = document.querySelector("#button_clear");
 gridButtonClear.addEventListener("click", () => {    
     clearGrid();
 });
+
+// Hides or shows the grid 
+const gridButtonHide = document.querySelector("#button_hide");
+gridButtonHide.addEventListener("click", () => {    
+    if ( gridVisible === true ) {
+        allPixels = document.querySelectorAll(".pixel");
+        allPixels.forEach(element => {
+            element.classList.add("hidden");
+    })
+        gridVisible = false;
+        gridButtonHide.textContent = "Show Grid";
+    }
+    else if ( gridVisible === false ) {
+        allPixels = document.querySelectorAll(".pixel.hidden");
+        allPixels.forEach(element => {
+            element.classList.remove("hidden");
+    })
+        gridVisible = true;
+        gridButtonHide.textContent = "Hide Grid";
+    }
+  }
+);
 
 // Selects the black brush
 const gridButtonBlack = document.querySelector("#button_black");

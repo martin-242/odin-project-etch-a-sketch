@@ -102,16 +102,26 @@ h1{
 
 .pixel_black{
     background-color: rgb(77, 77, 77);
+    border: 0px solid black;
 }
 
 .pixel_eraser{
     background-color: rgb(233, 223, 211);
+    border: 0px solid black;
+}
+
+.pixel{
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.pixel.hidden{
+    border: 0px solid rgba(0, 0, 0, 0.15);
 }
 
 #gridPixel{
     /* margin: -1px 0 0 -1px; */
-    border: 1px solid rgba(0, 0, 0, 0.15);
-} 
+    /* border: 1px solid rgba(0, 0, 0, 0.15); */
+}
 
 #footer_container{
     font-family: 'Cabin Sketch', sans-serif;
